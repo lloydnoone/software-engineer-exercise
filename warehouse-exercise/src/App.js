@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { data as product } from './data/product.json'
 import { hits as recommendations } from './data/recommendations.json'
 
-import LightBox from './components/LightBox'
+import Recommendation from './components/Recommendation'
 
 import './App.css';
 
@@ -20,12 +20,7 @@ class App extends Component {
             .filter(rec => rec.image) // filter out rec with no images
             .map(rec => {
               return (
-                <div key={rec.product_id}>
-                  <img src={rec.image.link} alt={rec.image.alt} />
-                  <h2>{rec.product_name}</h2>
-                  <p>£{rec.price}.00</p>
-                  <LightBox productId={rec.product_id} displayLightBox={false}/>
-                </div>
+                <Recommendation key={rec.product_id} rec={rec}/>
               )
             })}
         </div>
