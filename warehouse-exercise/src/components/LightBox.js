@@ -2,45 +2,19 @@ import React, { Component } from 'react';
 
 import { data as productData } from '../data/product.json'
 
+import Carousel from './Carousel'
+
 class LightBox extends Component {
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      carouselIdx: 1
-    }
-    this.nextImage = this.nextImage.bind(this)
-  }
-
-  nextImage(length) {
-    console.log(length)
-    if ( this.state.carouselIdx + 1 < length ) {
-      console.log('should add')
-      this.setState({ carouselIdx: this.state.carouselIdx + 1 })
-    } else {
-      console.log('should reset')
-      this.setState({ carouselIdx: 1})
-    }
-    
-  }
-
   render() {
      // find in product data using recommendation ID 
     const recId = this.props.recId.slice(0, 6) //recommendation ID
     const product = productData.find(prod => prod.id === recId) //product details of the same ID
-    console.log('recId', recId)
-    console.log('product', product)
-    console.log('carouselIdx: ', this.state.carouselIdx)
     return (
       <div className='lightbox' style={{ display: this.props.displayLightBox ? 'flex' : 'none' }}>
         <div className='modal'>
-          <div className='carousel'>
-            <img 
-              src={product.image_groups[0].images[this.state.carouselIdx].link} 
-              alt={product.image_groups[0].images[0].alt} 
-              onClick={() => this.nextImage(product.image_groups[0].images.length)}
-            />
-          </div>
+          <Carousel 
+            images={product.image_groups[0].images}
+          />
           <div className='details'>
             <div className='detailsHeader'>
               <div className='text'>
