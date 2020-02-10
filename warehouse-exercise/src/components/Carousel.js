@@ -8,6 +8,7 @@ class Carousel extends Component {
       carouselIdx: 1
     }
     this.nextImage = this.nextImage.bind(this)
+    this.prevImage = this.prevImage.bind(this)
   }
 
   nextImage() {
@@ -16,19 +17,30 @@ class Carousel extends Component {
     } else {
       this.setState({ carouselIdx: 1})
     }
-    
+  }
+
+  prevImage() {
+    if ( this.state.carouselIdx - 1 > 0 ) {
+      this.setState({ carouselIdx: this.state.carouselIdx - 1 })
+    } else {
+      this.setState({ carouselIdx: this.props.images.length - 1})
+    }
   }
 
   render() {
+    console.log('index: ', this.state.carouselIdx)
     return (
-      <div className='carousel'>
-        <div className='leftArrow'>{'<'}</div>
-        <div className='rightArrow'>{'>'}</div>
-        <img
-          src={this.props.images[this.state.carouselIdx].link}
-          alt={this.props.images[this.state.carouselIdx].alt}
-          onClick={this.nextImage}
-        />
+      <div 
+        className='carousel' 
+        style={{ 
+          backgroundImage: `url(${this.props.images[this.state.carouselIdx].link})`,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover'
+        }}
+        alt={this.props.images[this.state.carouselIdx].alt}
+      >
+        <div className='leftArrow' onClick={this.prevImage}></div>
+        <div className='rightArrow' onClick={this.nextImage}></div>
       </div>
     )
   }

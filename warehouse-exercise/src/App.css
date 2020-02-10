@@ -39,7 +39,7 @@ body {
   align-items: center;
   position: absolute;
   background: rgba(125, 125,125, 0.5);
-  z-index: 500;
+  z-index: 10;
   width: 100vw;
   height: 100vh;
 }
@@ -53,8 +53,10 @@ body {
 
 .carousel {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
+  width: 50%;
   max-width: 50%;
   overflow-x: hidden;
   position: relative;
@@ -83,9 +85,22 @@ body {
 }
 
 .leftArrow {
-  height: 100px;
-  width: 100px;
-  background: red;
+  height: 30px;
+  width: 30px;
   z-index: 999;
+  transform: rotate(45deg);
+  border-bottom:  black 1px solid;
+  border-left:  black 1px solid;
+  margin-left: 20px;
+}
+
+.rightArrow {
+  height: 30px;
+  width: 30px;
+  z-index: 999;
+  transform: rotate(45deg);
+  border-top: black 1px solid;
+  border-right: black 1px solid;
+  margin-right: 20px;
 }
 
