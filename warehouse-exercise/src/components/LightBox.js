@@ -9,6 +9,7 @@ class LightBox extends Component {
      // find in product data using recommendation ID 
     const recId = this.props.recId.slice(0, 6) //recommendation ID
     const product = productData.find(prod => prod.id === recId) //product details of the same ID
+    console.log(product)
     return (
       <div className='lightbox' style={{ display: this.props.displayLightBox ? 'flex' : 'none' }}>
         <div className='modal'>

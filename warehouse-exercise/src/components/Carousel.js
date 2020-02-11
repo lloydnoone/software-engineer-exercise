@@ -28,7 +28,6 @@ class Carousel extends Component {
   }
 
   render() {
-    console.log('index: ', this.state.carouselIdx)
     return (
       <div 
         className='carousel' 
